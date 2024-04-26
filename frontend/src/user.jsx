@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-function User() {
+function UserHome() {
   const [signupData, setSignupData] = useState({ username: '', email: '', password: '' });
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
@@ -73,4 +73,4 @@ function User() {
   );
 }
 
-export default User;
+export default UserHome;

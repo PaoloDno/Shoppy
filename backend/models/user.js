@@ -9,28 +9,25 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  password_hash: {
+  password: {
     type: String,
     required: true
   },
   userRole: {
     type: Number,
-    required: true,
+    default: 0,
   },
   phoneNumber: {
-    type: Number,
+    type: String,
+    default: ""
   },
   userImage: {
     type: String,
-    default: "user.png",
+    default: "",
   },
   verified: {
     type: Boolean, // Changed type to Boolean for verified field
     default: false,
-  },
-  secretKey: {
-    type: String,
-    default: null,
   },
   history: {
     type: Array,

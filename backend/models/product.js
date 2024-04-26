@@ -1,5 +1,26 @@
 const mongoose = require('mongoose');
 
+const ReviewSchema = mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User', // Assuming you have a User model
+      required: true
+    },
+    rating: {
+      type: Number,
+      required: true
+    },
+    comment: {
+      type: String,
+      required: true
+    }
+  },
+  {
+    timestamps: true
+  }
+);
+
 const ProductSchema = mongoose.Schema(
   {
     name: {
@@ -16,10 +37,21 @@ const ProductSchema = mongoose.Schema(
       required: true,
       default: 0
     },
-    img: {
+    feature_img: {
       type: String,
+      default: "",
       required: false
-    }
+    },
+    other_imgs: {
+      type: Array,
+      default: [],
+      required: false
+    },
+    category: {
+      type: String,
+      required: true
+    },
+    reviews: [ReviewSchema] // Embedding reviews in the product schema
   },
   {
     timestamps: true,
@@ -27,5 +59,6 @@ const ProductSchema = mongoose.Schema(
 );
 
 const Product = mongoose.model("Product", ProductSchema);
+
 
 module.exports = Product;

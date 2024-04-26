@@ -5,7 +5,7 @@ const userModel = require('../models/user.js');
 
 const createUser = async (req, res) => {
   try {
-    const { username, email, password, userRole, phoneNumber, userImage, verified, secretKey, history, shipping_address, billing_address } = req.body;
+    const { username, email, password } = req.body;
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -14,14 +14,6 @@ const createUser = async (req, res) => {
       username, 
       email, 
       password: hashedPassword, // Save hashed password to the database
-      userRole, 
-      phoneNumber, 
-      userImage, 
-      verified, 
-      secretKey, 
-      history, 
-      shipping_address, 
-      billing_address
     });
 
     await newUser.save();
@@ -35,7 +27,7 @@ const createUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password} = req.body;
 
     // Find user by email
     const user = await userModel.findOne({ email });
