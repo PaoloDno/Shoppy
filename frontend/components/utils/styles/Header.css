@@ -1,0 +1,194 @@
+
+.NavHeader{
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 6.9%;
+  padding: 0.5rem;
+  background-color: #252525;
+  width: 100vw;
+  margin-bottom: 10px;
+}
+
+.NavHeader .Logo {
+  display: flex;
+  padding: 0 0.3rem;
+  background: linear-gradient(45deg, #252525 20%, rgba(115, 238, 115, 0.205) 25%, transparent 40%);
+  color: #81f5b1;
+  text-decoration: none;
+  width: 15vw;
+  align-items: center;
+  justify-content: flex-start;
+}
+.NavHeader nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: auto;
+  height: 100%;
+  margin: 0 0.1rem;
+  background-color: #2613d402;
+  overflow: hidden;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.Navheader nav a:hover {
+  color: #3df188;
+}
+
+.NavHeader .nav-bar-btn,
+.NavHeader .nav-close-btn{
+  display: flex;
+  align-items: flex-end;
+  padding: 0.2rem;
+  cursor: pointer;
+  width: auto;
+  background: transparent;
+  border: 1px solid white;
+  opacity: 0;
+}
+.NavHeader .nav-close-btn .custom-icon,
+.NavHeader .nav-bar-btn .custom-icon{
+  color: #def5f8;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.NavHeader nav .navlinks{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem;
+    width: 90%;
+    background-color: hsla(240, 2%, 36%, 0.2);
+  }
+
+  .NavHeader nav .navlinks .navlinks-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-color: rgba(24, 23, 23, 0.048);
+    a {
+      padding: 0 2rem;
+      text-decoration: none;
+      color: #ffffff;
+    }
+  }
+
+ .NavHeader nav .navlinks .navlinks-right {
+  display: flex;
+  margin: 0.2rem;
+  padding: 0.2rem;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 1rem;
+  margin-right: auto;
+}
+
+.NavHeader nav .navlinks .navlinks-right a{
+  display: flex;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  justify-self: center;
+  align-items: center;
+  margin: 0 0.4rem;
+  button {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    padding: 0.4rem 1.4rem;
+  }
+}
+
+.NavHeader nav .navlinks .navlinks-left a:last-child {
+  margin-right: 1rem;
+}
+
+@media only screen and (max-width: 1024px){
+  
+  .Navheader {
+    justify-content: space-between;
+    width: 100vw;
+  }
+  .NavHeader .Logo{
+    position: absolute;
+    left: 0;
+  }
+  .NavHeader .nav-btn {
+    visibility: visible;
+    opacity: 1;
+  }
+  .NavHeader .nav-bar-btn{
+    display: flex;
+    margin-left: auto;
+    margin-right: 15px;
+  }
+  .NavHeader nav {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #252525;
+    transition: 1s;
+    transform: translateY(-120vh);
+  }
+  .NavHeader .responsive_nav {
+    transform: none;
+  }
+  .NavHeader nav .nav-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+  
+  .NavHeader nav .navlinks
+   {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .navlinks-left{
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-self: space-around;
+      align-items: flex-start;
+      a {
+        margin: 0.75rem 0;
+        justify-content: flex-start;
+        color: #ffffff;
+      }
+    }
+  }
+    .NavHeader nav .navlinks .navlinks-right
+   {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 0.5rem;
+   }
+
+}

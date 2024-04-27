@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './user.css';
 
 
@@ -16,26 +16,47 @@ function UserSignUp() {
       ...signUpData, [e.target.name]: e.target.value
     });
   }
+
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
-    try {
-      
+    
+    if (signUpData.username === '' || signUpData.email === '') {
+      setMessage("username or email cannot be empty");
+      return;
+    }
+    if (signUpData.password === '' || signUpData.password.length < 7 ) {
+      setMessage("passwrod cant be empty or less than 7 characters");
+      return;
+    }
 
+    try {
 
       const response = await fetch('http://localhost:1212/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(signupData),
+        body: JSON.stringify(signUpData),
       });
       const data = await response.json();
       setMessage(data.message); 
 
-    } catch {
-      console.error('Error:', error )
+    } catch (error) {
+      console.error('Error:', error );
+      setMessage('An error occurred. Please try again.');
     }
   }
+
+  useEffect(() => {
+    if(message !== ''){
+      
+      setTimeout(() => {
+      
+        setMessage('');
+      
+      }, 4000)
+    }
+  }, [message])
 
   return(
     <div className="Signup">

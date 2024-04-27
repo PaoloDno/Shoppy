@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './user.css';
 
 function UserLogin() {
@@ -6,7 +6,7 @@ function UserLogin() {
   const [loginData, setLoginData] = useState({email: '', password: ''});
   const [message, setMessage] = useState('');
 
-  const hendleLoginChange = (e) => {
+  const handleLoginChange = (e) => {
     setLoginData({...loginData, [e.target.name]: e.target.value });
   };
 
@@ -27,6 +27,16 @@ function UserLogin() {
     }
   };
 
+  useEffect(() => {
+    if(message !== ''){
+      
+      setTimeout(() => {
+      
+        setMessage('');
+      
+      }, 4000)
+    }
+  }, [message])
 
   return(
     <div className="Login">

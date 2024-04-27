@@ -1,9 +1,10 @@
 import React from 'react';
-
+import Header from '../utils/Header';
 function Homepage() {
   return (
-    <div>
-      <header>
+    <div className='Homepage'>
+      <Header />
+      <header className='WelcomeText'>
         <h1>Welcome to Our E-commerce Store</h1>
       </header>
       <main>
