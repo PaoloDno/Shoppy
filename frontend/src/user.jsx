@@ -48,6 +48,25 @@ function UserHome() {
     }
   };
 
+  const onClickUpdateCategory = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:1212/api/category/a', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // You can include data in the request body if required
+        body: JSON.stringify({}),
+      });
+      const data = await response.json();
+      setMessage(data.message); // Display the message from the server
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
   return (
     <div className="App">
       <h1>User Authentication</h1>
@@ -67,6 +86,10 @@ function UserHome() {
           <input type="password" name="password" placeholder="Password" value={loginData.password} onChange={handleLoginChange} required />
           <button type="submit">Login</button>
         </form>
+      </div>
+
+      <div className="cat-update-button">
+        <button onClick={onClickUpdateCategory}>Update Category</button>
       </div>
       <div id="message">{message}</div>
     </div>

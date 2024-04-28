@@ -1,148 +1,58 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import CategoryBar from "./CategoryBar.jsx";
+import ProductListings from "./ProductList";
 
-import "./styles/Carousel.css"
+function ProductDetail() {
+  const [products, setProducts] = useState([]);
+  const [productList, setProductList] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-import React from "react";
-import Slider from "react-slick";
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch product details
+        const productResponse = await axios.get(`http://localhost:1212/api/getProd`);
+        setProducts(productResponse.data);
 
-function CarouselRes() {
-  var settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
+        // Fetch categories
+        const categoriesResponse = await axios.get(`http://localhost:1212/api/a`);
+        setCategories(categoriesResponse.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
-    ]
+    };
+
+    fetchData();
+  }, []);
+
+  
+  const filterItems = (category) => {
+
+    if (category === 'All') {
+      setProductList(products);
+    } else {
+      const newList = products.filter((product) => product.category === category);
+      setProductList(newList);
+    }
   };
+
+  useEffect(() => {
+    // Update categories based on the current product list
+    const updatedCategories = ['All', ...new Set(products.map((product) => product.category))];
+    setCategories(updatedCategories);
+  }, [products]);
+
   return (
-    <div className="slider-container">
-      <Slider {...settings}>
-        <div className="carousel-cards">
-          <h3>1</h3>
-          <div className="cardText">
-            <span className="cardTitle">
-
-            </span>
-            <span className="bottomText">
-              <p className="categoryCard"></p>
-              <button className="hero-btn">Get Now</button>
-            </span>
-          </div>
-        </div>
-        <div className="carousel-cards">
-          <h3>2</h3>
-          <div className="cardText">
-            <span className="cardTitle">
-
-            </span>
-            <span className="bottomText">
-              <p className="categoryCard"></p>
-              <button className="hero-btn">Get Now</button>
-            </span>
-          </div>
-        </div>
-        <div className="carousel-cards">
-          <h3>3</h3>
-          <div className="cardText">
-            <span className="cardTitle">
-
-            </span>
-            <span className="bottomText">
-              <p className="categoryCard"></p>
-              <button className="hero-btn">Get Now</button>
-            </span>
-          </div>
-        </div>
-        <div className="carousel-cards">
-          <h3>4</h3>
-          <div className="cardText">
-            <span className="cardTitle">
-
-            </span>
-            <span className="bottomText">
-              <p className="categoryCard"></p>
-              <button className="hero-btn">Get Now</button>
-            </span>
-          </div>
-        </div>
-        <div className="carousel-cards">
-          <h3>5</h3>
-          <div className="cardText">
-            <span className="cardTitle">
-
-            </span>
-            <span className="bottomText">
-              <p className="categoryCard"></p>
-              <button className="hero-btn">Get Now</button>
-            </span>
-          </div>
-        </div>
-        <div className="carousel-cards">
-          <h3>6</h3>
-          <div className="cardText">
-            <span className="cardTitle">
-
-            </span>
-            <span className="bottomText">
-              <p className="categoryCard"></p>
-              <button className="hero-btn">Get Now</button>
-            </span>
-          </div>
-        </div>
-        <div className="carousel-cards">
-          <h3>7</h3>
-          <div className="cardText">
-            <span className="cardTitle">
-
-            </span>
-            <span className="bottomText">
-              <p className="categoryCard"></p>
-              <button className="hero-btn">Get Now</button>
-            </span>
-          </div>
-        </div>
-        <div className="carousel-cards">
-          <h3>8</h3>
-          <div className="cardText">
-            <span className="cardTitle">
-
-            </span>
-            <span className="bottomText">
-              <p className="categoryCard"></p>
-              <button className="hero-btn">Get Now</button>
-            </span>
-          </div>
-        </div>
-      </Slider>
+    <div className="feature-product-section">
+      <div className="category-bar">
+        <CategoryBar categories={categories} filterItems={filterItems} />
+      </div>
+      <div className="product-section">
+        <ProductListings productList={productList} />
+      </div>
     </div>
   );
 }
 
-export default CarouselRes;
+export default ProductDetail;

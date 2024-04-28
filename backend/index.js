@@ -26,11 +26,16 @@ const categoryRoute = require('./routes/categoryRoute.js')
 //routesmiddleware
 app.use("/api", prodFormRoute);
 app.use("/api", userRoute);
-app.use("/category", categoryRoute);
+app.use("/api", categoryRoute);
 
 app.get("/", function(req, res){
   res.send("I love hags")
 })
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Internal Server Error' });
+});
 
 
 app.get("/api/products", async function(req, res) {

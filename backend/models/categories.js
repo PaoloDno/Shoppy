@@ -7,14 +7,10 @@ const categorySchema = new mongoose.Schema({
     },
     cDescription: {
         type: String,
-        required: true
+        required: false
     },
     cImage: {
         type: String
-    },
-    cStatus: {
-        type: String,
-        required: true
     }
 }, { timestamps: true });
 
