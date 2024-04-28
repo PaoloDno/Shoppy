@@ -1,0 +1,15 @@
+.slider-container{
+  width: 100vw;
+
+  .carousel-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    background-color: aqua;
+    border: 1px solid salmon;
+    h3 {
+    color: rgb(23, 31, 100);
+    }
+  }
+}

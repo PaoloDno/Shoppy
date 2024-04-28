@@ -1,5 +1,7 @@
 import React from 'react';
 import Header from '../utils/Header';
+import HeroSection from '../utils/HeroSection';
+import "./styles/Home.css";
 function Homepage() {
   return (
     <div className='Homepage'>
@@ -10,6 +12,7 @@ function Homepage() {
       <main>
         <section>
           <h2>Featured Products</h2>
+          <HeroSection />
           {/* Display featured products here */}
           <div className="product-list">
             {/* Example product */}

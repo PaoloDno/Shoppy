@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const userAuth = require("../controller/userAuth.js");
+const category = require("../controller/categories");
 
-router.post("/login", userAuth.loginUser);
-router.post("/signup", userAuth.createUser);
+router.post("/", category.saveCategoriesFromProducts);
 
 module.exports = router;

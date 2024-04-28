@@ -18,12 +18,15 @@ app.use(express.json());
 connDB()
 
 //routers
-
+const prodFormRoute = require('./routes/productRoute.js')
 const userRoute = require('./routes/userRoute.js');
+const categoryRoute = require('./routes/categoryRoute.js')
 
 
-
+//routesmiddleware
+app.use("/api", prodFormRoute);
 app.use("/api", userRoute);
+app.use("/category", categoryRoute);
 
 app.get("/", function(req, res){
   res.send("I love hags")
