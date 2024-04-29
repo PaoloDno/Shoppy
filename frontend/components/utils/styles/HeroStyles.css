@@ -1,0 +1,13 @@
+.HeroSection{
+  display: flex;
+  flex-direction: column;
+  width: 97vw;
+  padding: 5px;
+  position: relative;
+}
+
+.feature-product-section{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}

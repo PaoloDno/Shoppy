@@ -1,0 +1,49 @@
+/* styles/ProductListings.css */
+.product-listings-sections {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Create 5 equal-width columns */
+  gap: 10px; /* Adjust the gap between columns */
+  justify-content: left; /* Center the cards horizontally */
+  overflow: hidden;
+  position: relative;
+}
+
+.product-card {
+  position: relative;
+  border: 1px solid #078507;
+  border-radius: 8px;
+  padding: 30px;
+  width: 240px; /* Limit the maximum width of each card */
+  height: 260px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  .card-text{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    span {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.product-card p {
+  margin: 0;
+  font-size: 16px;
+}

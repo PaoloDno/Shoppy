@@ -1,15 +1,82 @@
-.slider-container{
-  width: 100vw;
+.category-bar-container {
+  display: block;
+  max-width: 90vw; /* Limit the maximum width to 100vw */
+  overflow: hidden; /* Enable horizontal scrolling if the content exceeds the viewport width */
+  height: 14vh;
+}
 
-  .carousel-cards{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 250px;
-    background-color: aqua;
-    border: 1px solid salmon;
-    h3 {
-    color: rgb(23, 31, 100);
-    }
-  }
+.carousel-cards {
+  padding: 20px;
+  width: 200px; /* Adjust the width of each carousel card */
+  margin: 0 10px; /* Add margin between carousel cards */
+  background-color: #28a745;
+}
+
+.carousel-cards h3 {
+  text-align: center;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter-btn-categories {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #fcfdff;
+  color: #087542;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn-categories:hover {
+  background-color: #060b0f;
+  color: #fffefe;
+}
+
+.bottomText {
+  margin-top: 10px;
+}
+
+.hero-btn {
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #56b46b;
+}
+
+/* Customize the appearance of the slider dots */
+.slick-dots {
+  text-align: center;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.slick-dots li button {
+  font-size: 12px;
+  line-height: 1;
+  color: #000;
+  opacity: 0.5;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.slick-dots li.slick-active button {
+  opacity: 1;
 }
